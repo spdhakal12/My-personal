@@ -1,0 +1,2135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Suprabhat Dhakal | Creative Portfolio</title>
+
+  <meta name="description"
+        content="Suprabhat Dhakal — Media Creator, Video Editor, Photographer, Writer and IT Enthusiast from Nepal.">
+
+  <style>
+    /* =========================
+       ROOT
+    ========================== */
+
+    :root {
+      --bg: #070b14;
+      --bg2: #0c1220;
+      --card: rgba(255,255,255,0.055);
+      --card-hover: rgba(255,255,255,0.09);
+      --text: #f5f7ff;
+      --muted: #9ca8bd;
+      --primary: #7c5cff;
+      --secondary: #00d4ff;
+      --border: rgba(255,255,255,0.10);
+      --shadow: 0 20px 60px rgba(0,0,0,.35);
+      --max: 1180px;
+    }
+
+    body.light {
+      --bg: #f5f7fb;
+      --bg2: #ffffff;
+      --card: rgba(255,255,255,.75);
+      --card-hover: #ffffff;
+      --text: #111827;
+      --muted: #64748b;
+      --border: rgba(15,23,42,.10);
+      --shadow: 0 20px 60px rgba(15,23,42,.12);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
+
+    html {
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background:
+        radial-gradient(circle at 10% 10%, rgba(124,92,255,.12), transparent 30%),
+        radial-gradient(circle at 90% 30%, rgba(0,212,255,.10), transparent 30%),
+        var(--bg);
+      color: var(--text);
+      overflow-x: hidden;
+      transition: .35s ease;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    .container {
+      width: min(92%, var(--max));
+      margin: auto;
+    }
+
+    section {
+      padding: 100px 0;
+      position: relative;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-title span {
+      color: var(--secondary);
+      font-size: 14px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    .section-title h2 {
+      font-size: clamp(32px, 5vw, 52px);
+      margin-top: 10px;
+    }
+
+    .section-title p {
+      max-width: 650px;
+      margin: 15px auto 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    /* =========================
+       LOADER
+    ========================== */
+
+    #loader {
+      position: fixed;
+      inset: 0;
+      background: var(--bg);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 9999;
+      transition: .6s ease;
+    }
+
+    .loader-box {
+      text-align: center;
+    }
+
+    .loader-logo {
+      font-size: 48px;
+      font-weight: 900;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      color: transparent;
+      animation: pulse 1.2s infinite;
+    }
+
+    .loader-line {
+      width: 180px;
+      height: 3px;
+      background: rgba(255,255,255,.1);
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .loader-line::after {
+      content: "";
+      display: block;
+      height: 100%;
+      width: 50%;
+      background: linear-gradient(90deg,var(--primary),var(--secondary));
+      animation: loading 1s infinite;
+    }
+
+    @keyframes loading {
+      from { transform: translateX(-100%); }
+      to { transform: translateX(200%); }
+    }
+
+    @keyframes pulse {
+      50% { transform: scale(1.08); }
+    }
+
+    /* =========================
+       CURSOR
+    ========================== */
+
+    .cursor {
+      width: 20px;
+      height: 20px;
+      border: 2px solid var(--secondary);
+      border-radius: 50%;
+      position: fixed;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%,-50%);
+      transition: transform .08s linear;
+      mix-blend-mode: difference;
+    }
+
+    /* =========================
+       HEADER
+    ========================== */
+
+    header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      padding: 18px 0;
+      transition: .3s;
+    }
+
+    header.scrolled {
+      background: rgba(7,11,20,.75);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    body.light header.scrolled {
+      background: rgba(255,255,255,.78);
+    }
+
+    .nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 25px;
+      font-weight: 900;
+      letter-spacing: -1px;
+    }
+
+    .logo span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 14px;
+      color: var(--muted);
+      transition: .3s;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--text);
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+    }
+
+    .icon-btn,
+    .menu-btn {
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text);
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      cursor: pointer;
+      font-size: 17px;
+    }
+
+    .menu-btn {
+      display: none;
+      border-radius: 10px;
+    }
+
+    /* =========================
+       HERO
+    ========================== */
+
+    #home {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 120px;
+      overflow: hidden;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .hero-small {
+      color: var(--secondary);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-size: 13px;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: clamp(48px, 7vw, 90px);
+      line-height: .98;
+      letter-spacing: -4px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .typing {
+      margin-top: 25px;
+      font-size: clamp(20px,3vw,30px);
+      font-weight: 600;
+      min-height: 38px;
+    }
+
+    .typing span {
+      color: var(--secondary);
+    }
+
+    .hero-description {
+      margin-top: 20px;
+      color: var(--muted);
+      max-width: 650px;
+      line-height: 1.8;
+      font-size: 16px;
+    }
+
+    .hero-buttons {
+      margin-top: 35px;
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 14px 23px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      transition: .3s;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .btn-primary {
+      background: linear-gradient(90deg,var(--primary),var(--secondary));
+      border: none;
+      color: white;
+    }
+
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow);
+    }
+
+    .hero-visual {
+      position: relative;
+      display: flex;
+      justify-content: center;
+    }
+
+    .profile-orbit {
+      width: 390px;
+      height: 390px;
+      border-radius: 50%;
+      border: 1px solid rgba(0,212,255,.25);
+      position: relative;
+      animation: rotate 18s linear infinite;
+    }
+
+    .profile-orbit::before,
+    .profile-orbit::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      border: 1px dashed rgba(124,92,255,.35);
+    }
+
+    .profile-orbit::before {
+      inset: 30px;
+    }
+
+    .profile-orbit::after {
+      inset: 65px;
+    }
+
+    .profile-circle {
+      position: absolute;
+      width: 245px;
+      height: 245px;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%,-50%);
+      border-radius: 50%;
+      background:
+        linear-gradient(135deg,rgba(124,92,255,.9),rgba(0,212,255,.75));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow:
+        0 0 80px rgba(124,92,255,.35),
+        0 0 120px rgba(0,212,255,.15);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    .profile-initial {
+      font-size: 90px;
+      font-weight: 900;
+      color: white;
+      letter-spacing: -8px;
+    }
+
+    .orbit-dot {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      background: var(--secondary);
+      border-radius: 50%;
+      box-shadow: 0 0 25px var(--secondary);
+    }
+
+    .dot1 { top: 10px; left: 50%; }
+    .dot2 { bottom: 25px; right: 25px; background: var(--primary); }
+
+    @keyframes rotate {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes float {
+      50% { transform: translate(-50%,-55%); }
+    }
+
+    /* =========================
+       ABOUT
+    ========================== */
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: .8fr 1.2fr;
+      gap: 60px;
+      align-items: center;
+    }
+
+    .about-card {
+      min-height: 400px;
+      border-radius: 25px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .about-card::before {
+      content: "";
+      position: absolute;
+      width: 250px;
+      height: 250px;
+      background: var(--primary);
+      filter: blur(100px);
+      opacity: .25;
+    }
+
+    .about-card h3 {
+      position: relative;
+      font-size: 90px;
+      z-index: 2;
+      letter-spacing: -8px;
+    }
+
+    .about-text h3 {
+      font-size: 38px;
+      margin-bottom: 20px;
+    }
+
+    .about-text p {
+      color: var(--muted);
+      line-height: 1.9;
+      margin-bottom: 18px;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 12px;
+      margin-top: 25px;
+    }
+
+    .info-item {
+      padding: 16px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+    }
+
+    .info-item small {
+      display: block;
+      color: var(--muted);
+      margin-bottom: 6px;
+    }
+
+    /* =========================
+       SKILLS
+    ========================== */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(2,1fr);
+      gap: 20px;
+    }
+
+    .skill {
+      padding: 25px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 18px;
+      transition: .3s;
+    }
+
+    .skill:hover {
+      transform: translateY(-6px);
+      background: var(--card-hover);
+    }
+
+    .skill-top {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 13px;
+    }
+
+    .skill-top span:last-child {
+      color: var(--secondary);
+      font-weight: bold;
+    }
+
+    .progress {
+      height: 8px;
+      border-radius: 20px;
+      background: rgba(255,255,255,.08);
+      overflow: hidden;
+    }
+
+    .progress span {
+      display: block;
+      width: 0;
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg,var(--primary),var(--secondary));
+      transition: width 1.5s ease;
+    }
+
+    /* =========================
+       INTERESTS
+    ========================== */
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .interest-card {
+      padding: 30px 22px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 20px;
+      transition: .35s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .interest-card:hover {
+      transform: translateY(-10px);
+      border-color: rgba(0,212,255,.35);
+    }
+
+    .interest-icon {
+      font-size: 35px;
+      margin-bottom: 22px;
+    }
+
+    .interest-card h3 {
+      margin-bottom: 10px;
+    }
+
+    .interest-card p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    /* =========================
+       STATS
+    ========================== */
+
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .stat {
+      padding: 35px 20px;
+      text-align: center;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+    }
+
+    .stat h3 {
+      font-size: 45px;
+      background: linear-gradient(90deg,var(--primary),var(--secondary));
+      -webkit-background-clip: text;
+      color: transparent;
+    }
+
+    .stat p {
+      color: var(--muted);
+      margin-top: 5px;
+    }
+
+    /* =========================
+       PROJECTS
+    ========================== */
+
+    .projects {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 22px;
+    }
+
+    .project {
+      border: 1px solid var(--border);
+      background: var(--card);
+      border-radius: 22px;
+      overflow: hidden;
+      transition: .35s;
+    }
+
+    .project:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow);
+    }
+
+    .project-image {
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 60px;
+      background:
+        radial-gradient(circle at 20% 20%,rgba(124,92,255,.35),transparent 30%),
+        linear-gradient(135deg,#111827,#0b1020);
+    }
+
+    .project-content {
+      padding: 25px;
+    }
+
+    .project-content h3 {
+      margin-bottom: 10px;
+    }
+
+    .project-content p {
+      color: var(--muted);
+      line-height: 1.7;
+      font-size: 14px;
+    }
+
+    .tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      font-size: 11px;
+      border-radius: 30px;
+      background: rgba(124,92,255,.12);
+      color: var(--secondary);
+      border: 1px solid rgba(124,92,255,.18);
+    }
+
+    /* =========================
+       TIMELINE
+    ========================== */
+
+    .timeline {
+      max-width: 850px;
+      margin: auto;
+      position: relative;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 20px;
+      top: 0;
+      bottom: 0;
+      width: 2px;
+      background: linear-gradient(var(--primary),var(--secondary));
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-left: 65px;
+      margin-bottom: 45px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: 11px;
+      top: 5px;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: var(--secondary);
+      box-shadow: 0 0 20px var(--secondary);
+    }
+
+    .timeline-item h3 {
+      margin-bottom: 8px;
+    }
+
+    .timeline-item span {
+      color: var(--secondary);
+      font-size: 13px;
+    }
+
+    .timeline-item p {
+      margin-top: 10px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    /* =========================
+       CONTACT
+    ========================== */
+
+    .contact-box {
+      max-width: 900px;
+      margin: auto;
+      padding: 55px;
+      border-radius: 28px;
+      background:
+        radial-gradient(circle at top right,rgba(0,212,255,.15),transparent 35%),
+        radial-gradient(circle at bottom left,rgba(124,92,255,.15),transparent 35%),
+        var(--card);
+      border: 1px solid var(--border);
+      text-align: center;
+    }
+
+    .contact-box h2 {
+      font-size: clamp(32px,5vw,55px);
+    }
+
+    .contact-box p {
+      max-width: 600px;
+      margin: 15px auto 30px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .socials {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 30px;
+    }
+
+    .social {
+      padding: 11px 17px;
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      color: var(--muted);
+      transition: .3s;
+    }
+
+    .social:hover {
+      color: white;
+      background: linear-gradient(90deg,var(--primary),var(--secondary));
+      transform: translateY(-3px);
+    }
+
+    /* =========================
+       FOOTER
+    ========================== */
+
+    footer {
+      padding: 30px 0;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    footer strong {
+      color: var(--text);
+    }
+
+    /* =========================
+       REVEAL ANIMATION
+    ========================== */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(35px);
+      transition: .8s ease;
+    }
+
+    .reveal.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* =========================
+       RESPONSIVE
+    ========================== */
+
+    @media(max-width: 900px) {
+
+      .nav-links {
+        position: absolute;
+        top: 75px;
+        left: 4%;
+        width: 92%;
+        padding: 25px;
+        flex-direction: column;
+        background: var(--bg2);
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        display: none;
+      }
+
+      .nav-links.show {
+        display: flex;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero,
+      .about-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        text-align: center;
+      }
+
+      .hero-description {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-visual {
+        order: -1;
+      }
+
+      .profile-orbit {
+        width: 300px;
+        height: 300px;
+      }
+
+      .profile-circle {
+        width: 190px;
+        height: 190px;
+      }
+
+      .profile-initial {
+        font-size: 70px;
+      }
+
+      .cards,
+      .stats {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .projects {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    @media(max-width: 600px) {
+
+      section {
+        padding: 75px 0;
+      }
+
+      .cursor {
+        display: none;
+      }
+
+      .nav-actions .icon-btn {
+        width: 38px;
+        height: 38px;
+      }
+
+      .hero h1 {
+        font-size: 52px;
+        letter-spacing: -3px;
+      }
+
+      .profile-orbit {
+        width: 270px;
+        height: 270px;
+      }
+
+      .profile-circle {
+        width: 175px;
+        height: 175px;
+      }
+
+      .skills-grid,
+      .cards,
+      .stats,
+      .projects {
+        grid-template-columns: 1fr;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-box {
+        padding: 35px 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- =========================
+       LOADER
+  ========================== -->
+
+  <div id="loader">
+    <div class="loader-box">
+      <div class="loader-logo">SP</div>
+      <div class="loader-line"></div>
+    </div>
+  </div>
+
+  <!-- Cursor -->
+  <div class="cursor"></div>
+
+  <!-- =========================
+       HEADER
+  ========================== -->
+
+  <header id="header">
+
+    <div class="container nav">
+
+      <a href="#home" class="logo">
+        SP<span>.</span>
+      </a>
+
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#interests">Interests</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#journey">Journey</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+
+      <div class="nav-actions">
+
+        <button class="icon-btn" id="themeBtn" title="Toggle theme">
+          ☀
+        </button>
+
+        <button class="menu-btn" id="menuBtn">
+          ☰
+        </button>
+
+      </div>
+
+    </div>
+
+  </header>
+
+
+  <!-- =========================
+       HERO
+  ========================== -->
+
+  <section id="home">
+
+    <div class="container hero">
+
+      <div class="hero-content reveal">
+
+        <div class="hero-small">
+          Hello, I'm
+        </div>
+
+        <h1>
+          Suprabhat<br>
+          <span class="gradient-text">Dhakal.</span>
+        </h1>
+
+        <div class="typing">
+          I'm a <span id="typingText"></span>
+        </div>
+
+        <p class="hero-description">
+          I create stories through media, visuals and technology.
+          I am passionate about photography, videography, video editing,
+          writing, digital media and exploring the world of IT.
+        </p>
+
+        <div class="hero-buttons">
+
+          <a href="#projects" class="btn btn-primary">
+            Explore My Work →
+          </a>
+
+          <a href="#contact" class="btn">
+            Let's Connect
+          </a>
+
+        </div>
+
+      </div>
+
+
+      <div class="hero-visual reveal">
+
+        <div class="profile-orbit">
+
+          <div class="orbit-dot dot1"></div>
+          <div class="orbit-dot dot2"></div>
+<div class="profile-circle">
+  <img src="me.png" alt="Suprabhat Dhakal">
+</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       ABOUT
+  ========================== -->
+
+  <section id="about">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+        <span>Who I Am</span>
+        <h2>About Me</h2>
+        <p>
+          A creative mind exploring media, technology and storytelling.
+        </p>
+      </div>
+
+
+      <div class="about-grid">
+
+       <div class="about-card reveal">
+    <img src="IMG_0128.JPG" alt="Suprabhat Dhakal">
+</div>
+
+
+        <div class="about-text reveal">
+
+          <h3>Creative mind. Curious learner.</h3>
+
+          <p>
+            I'm <strong>Suprabhat Dhakal</strong>, a creative person from
+            Nepal who enjoys turning ideas into visual stories and digital
+            experiences.
+          </p>
+
+          <p>
+            My interests combine <strong>media and technology</strong>.
+            From photography and videography to video editing, writing,
+            web development and IT, I enjoy learning something new and
+            experimenting with creative ideas.
+          </p>
+
+          <p>
+            I believe creativity is not only about making something look
+            good — it is about communicating an idea, emotion or story
+            in a meaningful way.
+          </p>
+
+
+          <div class="info-grid">
+
+            <div class="info-item">
+              <small>Name</small>
+              <strong>Suprabhat Dhakal</strong>
+            </div>
+
+            <div class="info-item">
+              <small>Based In</small>
+              <strong>Nepal 🇳🇵</strong>
+            </div>
+
+            <div class="info-item">
+              <small>Focus</small>
+              <strong>Media & IT</strong>
+            </div>
+
+            <div class="info-item">
+              <small>Role</small>
+              <strong>Creative Creator</strong>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       SKILLS
+  ========================== -->
+
+  <section id="skills">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <span>What I Do</span>
+
+        <h2>My Skills</h2>
+
+        <p>
+          A combination of creative, media and technology skills.
+        </p>
+
+      </div>
+
+
+      <div class="skills-grid">
+
+        <div class="skill reveal">
+          <div class="skill-top">
+            <strong>Video Editing</strong>
+            <span>90%</span>
+          </div>
+          <div class="progress">
+            <span data-width="90%"></span>
+          </div>
+        </div>
+
+
+        <div class="skill reveal">
+          <div class="skill-top">
+            <strong>Photography</strong>
+            <span>88%</span>
+          </div>
+          <div class="progress">
+            <span data-width="88%"></span>
+          </div>
+        </div>
+
+
+        <div class="skill reveal">
+          <div class="skill-top">
+            <strong>Videography</strong>
+            <span>85%</span>
+          </div>
+          <div class="progress">
+            <span data-width="85%"></span>
+          </div>
+        </div>
+
+
+        <div class="skill reveal">
+          <div class="skill-top">
+            <strong>Writing</strong>
+            <span>82%</span>
+          </div>
+          <div class="progress">
+            <span data-width="82%"></span>
+          </div>
+        </div>
+
+
+        <div class="skill reveal">
+          <div class="skill-top">
+            <strong>Graphic / Creative Design</strong>
+            <span>78%</span>
+          </div>
+          <div class="progress">
+            <span data-width="78%"></span>
+          </div>
+        </div>
+
+
+        <div class="skill reveal">
+          <div class="skill-top">
+            <strong>Web / IT</strong>
+            <span>72%</span>
+          </div>
+          <div class="progress">
+            <span data-width="72%"></span>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       INTERESTS
+  ========================== -->
+
+  <section id="interests">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <span>Beyond Work</span>
+
+        <h2>Interests & Hobbies</h2>
+
+        <p>
+          The things that keep me curious and creative.
+        </p>
+
+      </div>
+
+
+      <div class="cards">
+
+        <div class="interest-card reveal">
+          <div class="interest-icon">📸</div>
+          <h3>Photography</h3>
+          <p>
+            Capturing moments, people, places and stories through the lens.
+          </p>
+        </div>
+
+
+        <div class="interest-card reveal">
+          <div class="interest-icon">🎥</div>
+          <h3>Videography</h3>
+          <p>
+            Exploring visual storytelling through moving images and creative shots.
+          </p>
+        </div>
+
+
+        <div class="interest-card reveal">
+          <div class="interest-icon">✍️</div>
+          <h3>Writing</h3>
+          <p>
+            Turning ideas, observations and stories into meaningful words.
+          </p>
+        </div>
+
+
+        <div class="interest-card reveal">
+          <div class="interest-icon">💻</div>
+          <h3>Technology</h3>
+          <p>
+            Learning programming, web development and new digital technologies.
+          </p>
+        </div>
+
+
+        <div class="interest-card reveal">
+          <div class="interest-icon">🎬</div>
+          <h3>Video Editing</h3>
+          <p>
+            Building engaging videos with rhythm, storytelling and visual effects.
+          </p>
+        </div>
+
+
+        <div class="interest-card reveal">
+          <div class="interest-icon">📰</div>
+          <h3>Media</h3>
+          <p>
+            Exploring journalism, digital media and public-interest stories.
+          </p>
+        </div>
+
+
+        <div class="interest-card reveal">
+          <div class="interest-icon">🌐</div>
+          <h3>Web</h3>
+          <p>
+            Creating and experimenting with websites and digital platforms.
+          </p>
+        </div>
+
+
+        <div class="interest-card reveal">
+          <div class="interest-icon">🚀</div>
+          <h3>Learning</h3>
+          <p>
+            Always curious to learn new skills and experiment with new ideas.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       STATS
+  ========================== -->
+
+  <section>
+
+    <div class="container">
+
+      <div class="stats">
+
+        <div class="stat reveal">
+          <h3 class="counter" data-target="5">0</h3>
+          <p>Creative Skills</p>
+        </div>
+
+        <div class="stat reveal">
+          <h3 class="counter" data-target="10">0</h3>
+          <p>Areas of Interest</p>
+        </div>
+
+        <div class="stat reveal">
+          <h3 class="counter" data-target="100">0</h3>
+          <p>% Curiosity</p>
+        </div>
+
+        <div class="stat reveal">
+          <h3>∞</h3>
+          <p>Ideas</p>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       PROJECTS
+  ========================== -->
+
+  <section id="projects">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <span>My Work</span>
+
+        <h2>Creative Projects</h2>
+
+        <p>
+          A few areas where I love to create and experiment.
+        </p>
+
+      </div>
+
+
+      <div class="projects">
+
+        <div class="project reveal">
+
+          <div class="project-image">
+            🎬
+          </div>
+
+          <div class="project-content">
+
+            <h3>Digital Media</h3>
+
+            <p>
+              Creating news stories, short-form videos, social media content
+              and digital media materials.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Media</span>
+              <span class="tag">News</span>
+              <span class="tag">Video</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="project reveal">
+
+          <div class="project-image">
+            📷
+          </div>
+
+          <div class="project-content">
+
+            <h3>Photography & Visuals</h3>
+
+            <p>
+              Exploring photography, visual composition and creative
+              storytelling through images.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Photography</span>
+              <span class="tag">Visual</span>
+              <span class="tag">Creative</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="project reveal">
+
+          <div class="project-image">
+            💻
+          </div>
+
+          <div class="project-content">
+
+            <h3>Web & IT</h3>
+
+            <p>
+              Learning and building websites, programming projects and
+              experimenting with digital technologies.
+            </p>
+
+            <div class="tags">
+              <span class="tag">HTML</span>
+              <span class="tag">CSS</span>
+              <span class="tag">Python</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="project reveal">
+
+          <div class="project-image">
+            ✍️
+          </div>
+
+          <div class="project-content">
+
+            <h3>Writing</h3>
+
+            <p>
+              Writing stories, captions, news scripts and creative content
+              for digital platforms.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Writing</span>
+              <span class="tag">Storytelling</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="project reveal">
+
+          <div class="project-image">
+            🎨
+          </div>
+
+          <div class="project-content">
+
+            <h3>Creative Design</h3>
+
+            <p>
+              Designing social media graphics, thumbnails, posters,
+              branding materials and visual concepts.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Design</span>
+              <span class="tag">Branding</span>
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="project reveal">
+
+          <div class="project-image">
+            🌐
+          </div>
+
+          <div class="project-content">
+
+            <h3>Digital Experiments</h3>
+
+            <p>
+              Exploring new tools, AI, web technologies and creative
+              workflows to turn ideas into projects.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Technology</span>
+              <span class="tag">AI</span>
+              <span class="tag">Web</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       JOURNEY
+  ========================== -->
+
+  <section id="journey">
+
+    <div class="container">
+
+      <div class="section-title reveal">
+
+        <span>My Journey</span>
+
+        <h2>Creative Journey</h2>
+
+        <p>
+          Learning, experimenting and growing one project at a time.
+        </p>
+
+      </div>
+
+
+      <div class="timeline">
+
+        <div class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <span>CREATIVE BEGINNING</span>
+
+          <h3>Photography & Videography</h3>
+
+          <p>
+            Started exploring photography and videography,
+            developing an interest in visual storytelling.
+          </p>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <span>MEDIA</span>
+
+          <h3>Digital Media & Content Creation</h3>
+
+          <p>
+            Expanded into news content, social media videos,
+            writing and digital storytelling.
+          </p>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <span>TECHNOLOGY</span>
+
+          <h3>Exploring IT & Web Development</h3>
+
+          <p>
+            Started learning programming, web technologies,
+            databases, networking and other areas of IT.
+          </p>
+
+        </div>
+
+
+        <div class="timeline-item reveal">
+
+          <div class="timeline-dot"></div>
+
+          <span>NOW</span>
+
+          <h3>Building & Learning</h3>
+
+          <p>
+            Combining creativity and technology to build new
+            projects, content and digital experiences.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       CONTACT
+  ========================== -->
+
+  <section id="contact">
+
+    <div class="container">
+
+      <div class="contact-box reveal">
+
+        <h2>
+          Let's create something
+          <span class="gradient-text">great.</span>
+        </h2>
+
+        <p>
+          Have an idea, project or creative collaboration?
+          Let's connect and turn the idea into something meaningful.
+        </p>
+
+        <a href="mailto:me.spdhakal@gmail.com"
+           class="btn btn-primary">
+          Contact Me →
+        </a>
+
+
+        <div class="socials">
+
+          <!-- Replace these links with your real profiles -->
+
+          <a href="https://www.facebook.com/sp.dhakal.520" class="social" target="_blank">
+            Facebook
+          </a>
+
+          <a href="https://www.instagram.com/spdhakal124/" class="social" target="_blank">
+            Instagram
+          </a>
+
+          <a href="#" class="social" target="_blank">
+            TikTok
+          </a>
+
+          <a href="https://www.youtube.com/@SpDhakal1/" class="social" target="_blank">
+            Youtube
+          </a>
+
+          <a href="#" class="social" target="_blank">
+            LinkedIn
+          </a>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- =========================
+       FOOTER
+  ========================== -->
+
+  <footer>
+
+    <div class="container">
+
+      © <span id="year"></span>
+      <strong>Suprabhat Dhakal</strong>.
+      All rights reserved.
+
+      <br><br>
+
+     
+
+    </div>
+
+  </footer>
+
+
+  <!-- =========================
+       JAVASCRIPT
+  ========================== -->
+
+  <script>
+
+    /* =========================
+       LOADER
+    ========================== */
+
+    window.addEventListener("load", () => {
+
+      const loader = document.getElementById("loader");
+
+      setTimeout(() => {
+        loader.style.opacity = "0";
+        loader.style.pointerEvents = "none";
+
+        setTimeout(() => {
+          loader.style.display = "none";
+        }, 600);
+
+      }, 700);
+
+    });
+
+
+    /* =========================
+       HEADER SCROLL
+    ========================== */
+
+    const header = document.getElementById("header");
+
+    window.addEventListener("scroll", () => {
+
+      if (window.scrollY > 40) {
+        header.classList.add("scrolled");
+      } else {
+        header.classList.remove("scrolled");
+      }
+
+    });
+
+
+    /* =========================
+       MOBILE MENU
+    ========================== */
+
+    const menuBtn = document.getElementById("menuBtn");
+    const navLinks = document.getElementById("navLinks");
+
+    menuBtn.addEventListener("click", () => {
+      navLinks.classList.toggle("show");
+    });
+
+
+    document.querySelectorAll(".nav-links a").forEach(link => {
+
+      link.addEventListener("click", () => {
+        navLinks.classList.remove("show");
+      });
+
+    });
+
+
+    /* =========================
+       DARK / LIGHT MODE
+    ========================== */
+
+    const themeBtn = document.getElementById("themeBtn");
+
+    const savedTheme = localStorage.getItem("portfolioTheme");
+
+    if (savedTheme === "light") {
+      document.body.classList.add("light");
+      themeBtn.textContent = "🌙";
+    }
+
+    themeBtn.addEventListener("click", () => {
+
+      document.body.classList.toggle("light");
+
+      if (document.body.classList.contains("light")) {
+
+        localStorage.setItem("portfolioTheme", "light");
+        themeBtn.textContent = "🌙";
+
+      } else {
+
+        localStorage.setItem("portfolioTheme", "dark");
+        themeBtn.textContent = "☀";
+
+      }
+
+    });
+
+
+    /* =========================
+       TYPING EFFECT
+    ========================== */
+
+    const typingText = document.getElementById("typingText");
+
+    const words = [
+      "Media Creator",
+      "Video Editor",
+      "Photographer",
+      "Videographer",
+      "Writer",
+      "IT Enthusiast",
+      "Creative Explorer"
+    ];
+
+    let wordIndex = 0;
+    let charIndex = 0;
+    let deleting = false;
+
+    function typeEffect() {
+
+      const currentWord = words[wordIndex];
+
+      if (!deleting) {
+
+        typingText.textContent =
+          currentWord.substring(0, charIndex + 1);
+
+        charIndex++;
+
+        if (charIndex === currentWord.length) {
+
+          deleting = true;
+
+          setTimeout(typeEffect, 1300);
+
+          return;
+        }
+
+      } else {
+
+        typingText.textContent =
+          currentWord.substring(0, charIndex - 1);
+
+        charIndex--;
+
+        if (charIndex === 0) {
+
+          deleting = false;
+
+          wordIndex++;
+
+          if (wordIndex >= words.length) {
+            wordIndex = 0;
+          }
+
+        }
+
+      }
+
+      setTimeout(typeEffect, deleting ? 55 : 95);
+    }
+
+    typeEffect();
+
+
+    /* =========================
+       REVEAL ANIMATION
+    ========================== */
+
+    const observer = new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            entry.target.classList.add("show");
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: 0.12
+      }
+
+    );
+
+
+    document.querySelectorAll(".reveal").forEach(element => {
+      observer.observe(element);
+    });
+
+
+    /* =========================
+       SKILL PROGRESS
+    ========================== */
+
+    const skillObserver = new IntersectionObserver(
+
+      (entries) => {
+
+        entries.forEach(entry => {
+
+          if (entry.isIntersecting) {
+
+            const bar =
+              entry.target.querySelector(".progress span");
+
+            if (bar) {
+              bar.style.width = bar.dataset.width;
+            }
+
+          }
+
+        });
+
+      },
+
+      {
+        threshold: .4
+      }
+
+    );
+
+
+    document.querySelectorAll(".skill").forEach(skill => {
+      skillObserver.observe(skill);
+    });
+
+
+    /* =========================
+       COUNTER ANIMATION
+    ========================== */
+
+    const counters =
+      document.querySelectorAll(".counter");
+
+    const counterObserver =
+      new IntersectionObserver(
+
+        (entries, observer) => {
+
+          entries.forEach(entry => {
+
+            if (!entry.isIntersecting) return;
+
+            const counter = entry.target;
+
+            const target =
+              Number(counter.dataset.target);
+
+            let count = 0;
+
+            const speed =
+              Math.max(20, 1500 / target);
+
+            const updateCounter = () => {
+
+              if (count < target) {
+
+                count++;
+
+                counter.textContent = count;
+
+                setTimeout(updateCounter, speed);
+
+              } else {
+
+                counter.textContent = target;
+
+              }
+
+            };
+
+            updateCounter();
+
+            observer.unobserve(counter);
+
+          });
+
+        },
+
+        {
+          threshold: .8
+        }
+
+      );
+
+
+    counters.forEach(counter => {
+      counterObserver.observe(counter);
+    });
+
+
+    /* =========================
+       ACTIVE NAVIGATION
+    ========================== */
+
+    const sections =
+      document.querySelectorAll("section[id]");
+
+    const navItems =
+      document.querySelectorAll(".nav-links a");
+
+    window.addEventListener("scroll", () => {
+
+      let current = "";
+
+      sections.forEach(section => {
+
+        const sectionTop =
+          section.offsetTop - 150;
+
+        if (window.scrollY >= sectionTop) {
+          current = section.getAttribute("id");
+        }
+
+      });
+
+      navItems.forEach(link => {
+
+        link.classList.remove("active");
+
+        if (
+          link.getAttribute("href") === "#" + current
+        ) {
+          link.classList.add("active");
+        }
+
+      });
+
+    });
+
+
+    /* =========================
+       CUSTOM CURSOR
+    ========================== */
+
+    const cursor =
+      document.querySelector(".cursor");
+
+    document.addEventListener("mousemove", e => {
+
+      cursor.style.left = e.clientX + "px";
+      cursor.style.top = e.clientY + "px";
+
+    });
+
+
+    /* =========================
+       3D CARD EFFECT
+    ========================== */
+
+    document.querySelectorAll(".interest-card, .project")
+      .forEach(card => {
+
+        card.addEventListener("mousemove", e => {
+
+          const rect =
+            card.getBoundingClientRect();
+
+          const x =
+            e.clientX - rect.left;
+
+          const y =
+            e.clientY - rect.top;
+
+          const centerX =
+            rect.width / 2;
+
+          const centerY =
+            rect.height / 2;
+
+          const rotateX =
+            (y - centerY) / 18;
+
+          const rotateY =
+            (centerX - x) / 18;
+
+          card.style.transform =
+            `perspective(700px)
+             rotateX(${rotateX}deg)
+             rotateY(${rotateY}deg)
+             translateY(-5px)`;
+
+        });
+
+
+        card.addEventListener("mouseleave", () => {
+
+          card.style.transform =
+            "perspective(700px) rotateX(0) rotateY(0)";
+
+        });
+
+      });
+
+
+    /* =========================
+       CURRENT YEAR
+    ========================== */
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+
+
+  </script>
+
+</body>
+</html>
